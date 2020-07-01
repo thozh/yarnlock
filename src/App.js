@@ -1,23 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Children from "./Children";
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [time, setTime] = React.useState(new Date());
+
+  React.useEffect(() => {
+    setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <p>{time.toString()}</p>
+        <Children second={1} />
       </header>
     </div>
   );
